@@ -37,6 +37,12 @@ mongoose
   .then((response) => console.log(response))
   .then(() => Recipe.find())
   .then((response) => console.log(response))
+
+  // Disconnect from the database "recipe-app"
+  .then(() => {
+    console.log('Disconnecting from the database')
+    mongoose.connection.close(process.exit(0))
+  })
   
   .catch(error => {
     console.error('Error connecting to the database', error);
