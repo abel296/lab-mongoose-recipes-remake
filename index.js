@@ -15,20 +15,21 @@ mongoose
     useUnifiedTopology: true
   })
   .then(self => {
-    console.log(`Connected to the database: "${self.connection.name}"`);
+    console.log(`Connected to the database: "${ self.connection.name }"`);
     // Before adding any documents to the database, let's delete all previous entries
     return self.connection.dropDatabase();
   })
   // Create a recipe
   // .then(() => Recipe.create({ title: 'Red curry rice', cuisine: 'Thailandese' }))
   // .then((response) => console.log(response))
-  // .then(() => Recipe.insertMany([
 
   // Create many recipes
-  //   { title: 'Red curry rice', cuisine: 'Thailandese' },
-  //   { title: 'Green curry rice', cuisine: 'Thailandese' }
-  // ]))
-  // .then((response) => console.log(response))
+  .then(() => Recipe.insertMany(data))
+  .then((response) => console.log(response))
+
+  // Update a recipe
+  .then(() => Recipe.findOneAndUpdate({ title: 'Rigatoni alla Genovese' }, { duration: 100 }, { new: true }))
+  .then((response) => console.log(response))
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
