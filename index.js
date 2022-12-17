@@ -19,8 +19,16 @@ mongoose
     // Before adding any documents to the database, let's delete all previous entries
     return self.connection.dropDatabase();
   })
-  .then(() => Recipe.create({ title: 'Red curry rice', cuisine: 'Thailandese' }))
-  .then((response) => console.log(response))
+  // Create a recipe
+  // .then(() => Recipe.create({ title: 'Red curry rice', cuisine: 'Thailandese' }))
+  // .then((response) => console.log(response))
+  // .then(() => Recipe.insertMany([
+
+  // Create many recipes
+  //   { title: 'Red curry rice', cuisine: 'Thailandese' },
+  //   { title: 'Green curry rice', cuisine: 'Thailandese' }
+  // ]))
+  // .then((response) => console.log(response))
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
